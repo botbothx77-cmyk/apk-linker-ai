@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>License Manager</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header><div class="brand-mark">LM</div><div><h1>License Manager</h1><p>لوحة إدارة أكواد التفعيل</p></div></header>
+    <section id="login" class="panel narrow">
+      <h2>تسجيل الدخول</h2>
+      <label>البريد الإلكتروني<input id="email" type="email" autocomplete="username" placeholder="name@example.com"></label>
+      <label>كلمة المرور<input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+      <button id="loginBtn">دخول</button><p id="loginMsg" class="msg"></p>
+    </section>
+    <section id="app" hidden>
+      <div class="topline"><div><h2 id="welcome">لوحة التحكم</h2><p id="roleText" class="muted"></p></div><button id="logoutBtn" class="ghost">تسجيل الخروج</button></div>
+      <div class="stats">
+        <article class="panel"><span>إجمالي الأكواد</span><strong id="totalCodes">0</strong></article>
+        <article class="panel"><span>الأكواد النشطة</span><strong id="activeCodes">0</strong></article>
+      </div>
+      <section class="panel" id="createLicensePanel">
+        <h3>إنشاء كود تفعيل</h3>
+        <div class="formgrid">
+          <label>مدة الصلاحية بالأيام<input id="duration" type="number" min="1" max="3650" value="30"></label>
+          <label>عدد الأجهزة<input id="devices" type="number" min="1" max="20" value="1"></label>
+        </div>
+        <button id="createLicenseBtn">إنشاء كود</button><p id="licenseMsg" class="msg"></p>
+        <div id="newCode" class="newcode" hidden></div>
+      </section>
+      <section class="panel" id="adminsPanel" hidden>
+        <h3>إنشاء مسؤول فرعي</h3>
+        <div class="formgrid">
+          <label>البريد الإلكتروني<input id="adminEmail" type="email" placeholder="admin@example.com"></label>
+          <label>كلمة المرور المؤقتة<input id="adminPassword" type="password" minlength="8" placeholder="8 أحرف على الأقل"></label>
+        </div>
+        <label class="check"><input id="canCreate" type="checkbox" checked> السماح بإنشاء الأكواد</label>
+        <button id="createAdminBtn">إنشاء حساب المسؤول</button><p id="adminMsg" class="msg"></p>
+      </section>
+      <section class="panel">
+        <div class="sectionhead"><h3>الأكواد</h3><button id="refreshBtn" class="ghost">تحديث</button></div>
+        <div class="tablewrap"><table><thead><tr><th>الكود</th><th>الحالة</th><th>ينتهي في</th><th>الأجهزة</th></tr></thead><tbody id="licenseRows"><tr><td colspan="4">سجل الدخول لعرض البيانات</td></tr></tbody></table></div>
+      </section>
+    </section>
+    <footer>نسخة بداية — اربط إعدادات Supabase قبل الاستخدام</footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body></html>
